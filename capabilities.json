@@ -1,0 +1,87 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Values",
+            "name": "values",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "infoSettings": {
+            "displayName": "Info",
+            "properties": {
+                "show":{
+                    "displayName": "Show Info",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "infoTitle":{
+                    "displayName": "Title",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "infoText":{
+                    "displayName": "Text",
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        },
+        "measureFormatSettings": {
+            "displayName": "Format Measures",
+            "properties": {
+                "measureFormat": {
+                    "displayName": "Format",
+                    "type": {
+                        "enumeration": [
+                        {
+                            "displayName": "None",
+                            "value": "none"
+                        },
+                        {
+                            "displayName": "Thousands",
+                            "value": "thousands"
+                        },
+                        {
+                            "displayName": "Millions",
+                            "value": "millions"
+                        },
+                        {
+                            "displayName": "Billions",
+                            "value": "billions"
+                        },
+                        {
+                            "displayName": "Trillions",
+                            "value": "trillions"
+                        }]
+                    }
+                }
+            }
+        },
+        "imageSettings":{
+            "displayName": "Show Tooltip Image",
+            "properties": {
+                "show":{
+                    "type":{
+                        "bool":true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "table": {
+                "rows": {
+                    "for": {
+                        "in": "values"
+                    }
+                }
+            }
+        }
+    ],
+    "suppressDefaultTitle": true
+}

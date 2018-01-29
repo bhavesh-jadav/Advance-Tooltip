@@ -1,0 +1,33 @@
+{
+  "visual": {
+    "name": "advanceTooltip",
+    "displayName": "Advance Tooltip",
+    "guid": "invisibleTooltipADE8B01854F34CEF9616DF8EA6069129",
+    "visualClassName": "Visual",
+    "version": "1.0.0",
+    "description": "",
+    "supportUrl": "",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "1.10.0",
+  "author": {
+    "name": "Bhavesh Jadav",
+    "email": "bhaveshhjadav@gmail.com"
+  },
+  "assets": {
+    "icon": "assets/icon2.png"
+  },
+  "externalJS": [
+    "node_modules/powerbi-visuals-utils-dataviewutils/lib/index.js",
+    "node_modules/d3/d3.js",
+    "node_modules/globalize/lib/globalize.js",
+    "node_modules/globalize/lib/cultures/globalize.culture.en-US.js",
+    "node_modules/powerbi-visuals-utils-typeutils/lib/index.js",
+    "node_modules/powerbi-visuals-utils-dataviewutils/lib/index.js",
+    "node_modules/powerbi-visuals-utils-formattingutils/lib/index.js"
+  ],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": "dependencies.json",
+  "stringResources": []
+}
