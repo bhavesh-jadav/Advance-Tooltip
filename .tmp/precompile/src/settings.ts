@@ -31,7 +31,6 @@ import DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObje
   export class VisualSettings extends DataViewObjectsParser {
       public infoSettings: InfoSettings = new InfoSettings();
       public measureFormatSettings: MeasureFormatSettings = new MeasureFormatSettings();
-      public imageSettings: ImageSettings = new ImageSettings();
   }
 
   export class InfoSettings {
@@ -50,9 +49,5 @@ import DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObje
   
   export class MeasureFormatSettings{
     public measureFormat: MeasureFormats = MeasureFormats.none;
-  }
-
-  export class ImageSettings{
-    public show: boolean = false;
   }
 }

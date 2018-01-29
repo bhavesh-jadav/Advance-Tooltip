@@ -1,6 +1,6 @@
 module powerbi.visuals.plugins {
-    export var advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = {
-        name: 'advanceTooltipADE8B01854F34CEF9616DF8EA6069129',
+    export var advanceTooltipADE8B01854F34CEF9616DF8EA6069129_DEBUG = {
+        name: 'advanceTooltipADE8B01854F34CEF9616DF8EA6069129_DEBUG',
         displayName: 'Advance Tooltip',
         class: 'Visual',
         version: '1.0.0',

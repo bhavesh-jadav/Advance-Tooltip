@@ -170,16 +170,12 @@ module powerbi.extensibility.visual {
             switch(options.objectName){
                 case "measureFormatSettings":{
                     let columns = this.dataView[0].table.columns;
-                    let tooltips = this.viewModel.tooltips;
-                    let start = 0;
-                    if(this.settings.infoSettings.show == true)
-                        start = 1;
-                    for(let i = start; i < tooltips.length; i++){
+                    for(let i = 0; i < columns.length; i++){
                         let currentColumn = columns[i];
                         if(!currentColumn.type.text){
                             settings.push({
                                 objectName: options.objectName,
-                                displayName: tooltips[i].displayName,
+                                displayName: currentColumn.displayName,
                                 properties:{
                                     measureFormat: this.getValue<string>(currentColumn.objects, options.objectName, "measureFormat", "none")
                                 },
@@ -202,6 +198,7 @@ module powerbi.extensibility.visual {
                 }
                 break;
             }
+            // console.log(this.viewModel.tooltips);
             return settings;
         }
         public getValue<T>(objects: DataViewObjects, objectName: string, propertyName: string, defaultValue: T): T {

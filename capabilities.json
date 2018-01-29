@@ -60,16 +60,6 @@
                     }
                 }
             }
-        },
-        "imageSettings":{
-            "displayName": "Show Tooltip Image",
-            "properties": {
-                "show":{
-                    "type":{
-                        "bool":true
-                    }
-                }
-            }
         }
     },
     "dataViewMappings": [

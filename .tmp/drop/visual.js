@@ -18716,7 +18716,6 @@ var powerbi;
                         var _this = _super !== null && _super.apply(this, arguments) || this;
                         _this.infoSettings = new InfoSettings();
                         _this.measureFormatSettings = new MeasureFormatSettings();
-                        _this.imageSettings = new ImageSettings();
                         return _this;
                     }
                     return VisualSettings;
@@ -18746,13 +18745,6 @@ var powerbi;
                     return MeasureFormatSettings;
                 }());
                 advanceTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormatSettings = MeasureFormatSettings;
-                var ImageSettings = (function () {
-                    function ImageSettings() {
-                        this.show = false;
-                    }
-                    return ImageSettings;
-                }());
-                advanceTooltipADE8B01854F34CEF9616DF8EA6069129.ImageSettings = ImageSettings;
             })(advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 || (visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
@@ -18913,16 +18905,12 @@ var powerbi;
                             case "measureFormatSettings":
                                 {
                                     var columns = this.dataView[0].table.columns;
-                                    var tooltips = this.viewModel.tooltips;
-                                    var start = 0;
-                                    if (this.settings.infoSettings.show == true)
-                                        start = 1;
-                                    for (var i = start; i < tooltips.length; i++) {
+                                    for (var i = 0; i < columns.length; i++) {
                                         var currentColumn = columns[i];
                                         if (!currentColumn.type.text) {
                                             settings.push({
                                                 objectName: options.objectName,
-                                                displayName: tooltips[i].displayName,
+                                                displayName: currentColumn.displayName,
                                                 properties: {
                                                     measureFormat: this.getValue(currentColumn.objects, options.objectName, "measureFormat", "none")
                                                 },
@@ -18946,6 +18934,7 @@ var powerbi;
                                 }
                                 break;
                         }
+                        // console.log(this.viewModel.tooltips);
                         return settings;
                     };
                     Visual.prototype.getValue = function (objects, objectName, propertyName, defaultValue) {
@@ -18973,8 +18962,8 @@ var powerbi;
     (function (visuals) {
         var plugins;
         (function (plugins) {
-            plugins.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = {
-                name: 'advanceTooltipADE8B01854F34CEF9616DF8EA6069129',
+            plugins.advanceTooltipADE8B01854F34CEF9616DF8EA6069129_DEBUG = {
+                name: 'advanceTooltipADE8B01854F34CEF9616DF8EA6069129_DEBUG',
                 displayName: 'Advance Tooltip',
                 class: 'Visual',
                 version: '1.0.0',
