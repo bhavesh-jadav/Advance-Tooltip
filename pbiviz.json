@@ -2,7 +2,7 @@
   "visual": {
     "name": "advanceTooltip",
     "displayName": "Advance Tooltip",
-    "guid": "invisibleTooltipADE8B01854F34CEF9616DF8EA6069129",
+    "guid": "advanceTooltipADE8B01854F34CEF9616DF8EA6069129",
     "visualClassName": "Visual",
     "version": "1.0.0",
     "description": "",
