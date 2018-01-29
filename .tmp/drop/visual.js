@@ -18706,8 +18706,8 @@ var powerbi;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var invisibleTooltipADE8B01854F34CEF9616DF8EA6069129;
-            (function (invisibleTooltipADE8B01854F34CEF9616DF8EA6069129) {
+            var advanceTooltipADE8B01854F34CEF9616DF8EA6069129;
+            (function (advanceTooltipADE8B01854F34CEF9616DF8EA6069129) {
                 "use strict";
                 var DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
                 var VisualSettings = (function (_super) {
@@ -18721,7 +18721,7 @@ var powerbi;
                     }
                     return VisualSettings;
                 }(DataViewObjectsParser));
-                invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.VisualSettings = VisualSettings;
+                advanceTooltipADE8B01854F34CEF9616DF8EA6069129.VisualSettings = VisualSettings;
                 var InfoSettings = (function () {
                     function InfoSettings() {
                         this.show = false;
@@ -18730,7 +18730,7 @@ var powerbi;
                     }
                     return InfoSettings;
                 }());
-                invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.InfoSettings = InfoSettings;
+                advanceTooltipADE8B01854F34CEF9616DF8EA6069129.InfoSettings = InfoSettings;
                 var MeasureFormats;
                 (function (MeasureFormats) {
                     MeasureFormats[MeasureFormats["none"] = "none"] = "none";
@@ -18738,22 +18738,22 @@ var powerbi;
                     MeasureFormats[MeasureFormats["millions"] = "millions"] = "millions";
                     MeasureFormats[MeasureFormats["billions"] = "billions"] = "billions";
                     MeasureFormats[MeasureFormats["trillions"] = "trillions"] = "trillions";
-                })(MeasureFormats = invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormats || (invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormats = {}));
+                })(MeasureFormats = advanceTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormats || (advanceTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormats = {}));
                 var MeasureFormatSettings = (function () {
                     function MeasureFormatSettings() {
                         this.measureFormat = MeasureFormats.none;
                     }
                     return MeasureFormatSettings;
                 }());
-                invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormatSettings = MeasureFormatSettings;
+                advanceTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormatSettings = MeasureFormatSettings;
                 var ImageSettings = (function () {
                     function ImageSettings() {
                         this.show = false;
                     }
                     return ImageSettings;
                 }());
-                invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.ImageSettings = ImageSettings;
-            })(invisibleTooltipADE8B01854F34CEF9616DF8EA6069129 = visual.invisibleTooltipADE8B01854F34CEF9616DF8EA6069129 || (visual.invisibleTooltipADE8B01854F34CEF9616DF8EA6069129 = {}));
+                advanceTooltipADE8B01854F34CEF9616DF8EA6069129.ImageSettings = ImageSettings;
+            })(advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 || (visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
@@ -18789,8 +18789,8 @@ var powerbi;
     (function (extensibility) {
         var visual;
         (function (visual) {
-            var invisibleTooltipADE8B01854F34CEF9616DF8EA6069129;
-            (function (invisibleTooltipADE8B01854F34CEF9616DF8EA6069129) {
+            var advanceTooltipADE8B01854F34CEF9616DF8EA6069129;
+            (function (advanceTooltipADE8B01854F34CEF9616DF8EA6069129) {
                 "use strict";
                 var Visual = (function () {
                     function Visual(options) {
@@ -18899,7 +18899,7 @@ var powerbi;
                         return viewModel;
                     };
                     Visual.parseSettings = function (dataView) {
-                        return invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.VisualSettings.parse(dataView);
+                        return advanceTooltipADE8B01854F34CEF9616DF8EA6069129.VisualSettings.parse(dataView);
                     };
                     /**
                      * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the
@@ -18962,65 +18962,24 @@ var powerbi;
                     };
                     return Visual;
                 }());
-                invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.Visual = Visual;
-            })(invisibleTooltipADE8B01854F34CEF9616DF8EA6069129 = visual.invisibleTooltipADE8B01854F34CEF9616DF8EA6069129 || (visual.invisibleTooltipADE8B01854F34CEF9616DF8EA6069129 = {}));
+                advanceTooltipADE8B01854F34CEF9616DF8EA6069129.Visual = Visual;
+            })(advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 || (visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
 })(powerbi || (powerbi = {}));
-// module powerbi.extensibility.visual.invisibleTooltipADE8B01854F34CEF9616DF8EA6069129  {
-//     "use strict";
-//     export class Visual implements IVisual {
-//         private target: HTMLElement;
-//         private updateCount: number;
-//         private settings: VisualSettings;
-//         private textNode: Text;
-//         constructor(options: VisualConstructorOptions) {
-//             console.log('Visual constructor', options);
-//             this.target = options.element;
-//             this.updateCount = 0;
-//             if (typeof document !== "undefined") {
-//                 const new_p: HTMLElement = document.createElement("p");
-//                 new_p.appendChild(document.createTextNode("Update count:"));
-//                 const new_em: HTMLElement = document.createElement("em");
-//                 this.textNode = document.createTextNode(this.updateCount.toString());
-//                 new_em.appendChild(this.textNode);
-//                 new_p.appendChild(new_em);
-//                 this.target.appendChild(new_p);
-//             }
-//         }
-//         public update(options: VisualUpdateOptions) {
-//             this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
-//             console.log('Visual update', options);
-//             if (typeof this.textNode !== "undefined") {
-//                 this.textNode.textContent = (this.updateCount++).toString();
-//             }
-//         }
-//         private static parseSettings(dataView: DataView): VisualSettings {
-//             return VisualSettings.parse(dataView) as VisualSettings;
-//         }
-//         /** 
-//          * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the 
-//          * objects and properties you want to expose to the users in the property pane.
-//          * 
-//          */
-//         public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-//             return VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options);
-//         }
-//     }
-// }
 var powerbi;
 (function (powerbi) {
     var visuals;
     (function (visuals) {
         var plugins;
         (function (plugins) {
-            plugins.invisibleTooltipADE8B01854F34CEF9616DF8EA6069129 = {
-                name: 'invisibleTooltipADE8B01854F34CEF9616DF8EA6069129',
+            plugins.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = {
+                name: 'advanceTooltipADE8B01854F34CEF9616DF8EA6069129',
                 displayName: 'Advance Tooltip',
                 class: 'Visual',
                 version: '1.0.0',
                 apiVersion: '1.10.0',
-                create: function (options) { return new powerbi.extensibility.visual.invisibleTooltipADE8B01854F34CEF9616DF8EA6069129.Visual(options); },
+                create: function (options) { return new powerbi.extensibility.visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129.Visual(options); },
                 custom: true
             };
         })(plugins = visuals.plugins || (visuals.plugins = {}));

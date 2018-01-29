@@ -5,9 +5,9 @@
     "guid": "advanceTooltipADE8B01854F34CEF9616DF8EA6069129",
     "visualClassName": "Visual",
     "version": "1.0.0",
-    "description": "",
-    "supportUrl": "",
-    "gitHubUrl": ""
+    "description": "This custom visual allows user to add data in form of tooltip on top of other visuals. For example displaying data in form of tooltip on top of some image or some part of image.",
+    "supportUrl": "https://github.com/bhavesh-jadav/Advance-Tooltip",
+    "gitHubUrl": "https://github.com/bhavesh-jadav/Advance-Tooltip"
   },
   "apiVersion": "1.10.0",
   "author": {
