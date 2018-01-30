@@ -18716,6 +18716,7 @@ var powerbi;
                         var _this = _super !== null && _super.apply(this, arguments) || this;
                         _this.infoSettings = new InfoSettings();
                         _this.measureFormatSettings = new MeasureFormatSettings();
+                        _this.imageSettings = new ImageSettings();
                         return _this;
                     }
                     return VisualSettings;
@@ -18745,6 +18746,14 @@ var powerbi;
                     return MeasureFormatSettings;
                 }());
                 advanceTooltipADE8B01854F34CEF9616DF8EA6069129.MeasureFormatSettings = MeasureFormatSettings;
+                var ImageSettings = (function () {
+                    function ImageSettings() {
+                        this.show = false;
+                        this.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1024px-Infobox_info_icon.svg.png";
+                    }
+                    return ImageSettings;
+                }());
+                advanceTooltipADE8B01854F34CEF9616DF8EA6069129.ImageSettings = ImageSettings;
             })(advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 || (visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129 = {}));
         })(visual = extensibility.visual || (extensibility.visual = {}));
     })(extensibility = powerbi.extensibility || (powerbi.extensibility = {}));
@@ -18786,22 +18795,47 @@ var powerbi;
                 "use strict";
                 var Visual = (function () {
                     function Visual(options) {
+                        this.toolTipClassName = "atooltip";
                         this.host = options.host;
                         this.target = options.element;
-                        if (typeof document !== "undefined") {
-                            this.svg = d3.select(this.target)
-                                .append("svg")
-                                .classed("atooltip", true);
-                        }
                     }
                     Visual.prototype.update = function (options) {
                         var _this = this;
                         this.settings = Visual.parseSettings(options.dataViews[0]);
                         this.viewModel = this.getViewModel(options, this.settings);
-                        this.svg.attr({
-                            width: options.viewport.width,
-                            height: options.viewport.height
-                        });
+                        this.imageURL = this.settings.imageSettings.imageUrl;
+                        var viewPortHeight = options.viewport.height;
+                        var viewPortWidth = options.viewport.width;
+                        if (this.settings.imageSettings.show == true) {
+                            if (typeof document !== "undefined") {
+                                this.svg = d3.selectAll('.' + this.toolTipClassName).remove();
+                                this.svg = d3.select(this.target)
+                                    .append("svg")
+                                    .classed(this.toolTipClassName, true)
+                                    .attr({
+                                    width: options.viewport.width,
+                                    height: options.viewport.height
+                                });
+                                this.svgGroup = this.svg.append("g")
+                                    .classed("atooltip-group", true);
+                                this.svgGroup.append("svg:image")
+                                    .attr('width', viewPortWidth)
+                                    .attr('height', viewPortHeight)
+                                    .attr("xlink:href", this.imageURL);
+                            }
+                        }
+                        else {
+                            if (typeof document !== "undefined") {
+                                this.svg = d3.selectAll('.' + this.toolTipClassName).remove();
+                                this.svg = d3.select(this.target)
+                                    .append("svg")
+                                    .classed(this.toolTipClassName, true)
+                                    .attr({
+                                    width: viewPortWidth,
+                                    height: viewPortHeight
+                                });
+                            }
+                        }
                         this.svg.on("mouseover", function (e) {
                             var mouse = d3.mouse(_this.svg.node());
                             var x = mouse[0];
@@ -18920,22 +18954,11 @@ var powerbi;
                                     }
                                 }
                                 break;
-                            case "infoSettings":
-                                {
-                                    settings.push({
-                                        objectName: options.objectName,
-                                        properties: {
-                                            show: this.settings.infoSettings.show,
-                                            infoTitle: this.settings.infoSettings.infoTitle,
-                                            infoText: this.settings.infoSettings.infoText
-                                        },
-                                        selector: null
-                                    });
-                                }
-                                break;
                         }
-                        // console.log(this.viewModel.tooltips);
-                        return settings;
+                        if (settings.length > 0)
+                            return settings;
+                        else
+                            return advanceTooltipADE8B01854F34CEF9616DF8EA6069129.VisualSettings.enumerateObjectInstances(this.settings || advanceTooltipADE8B01854F34CEF9616DF8EA6069129.VisualSettings.getDefault(), options);
                     };
                     Visual.prototype.getValue = function (objects, objectName, propertyName, defaultValue) {
                         if (objects) {

@@ -36,28 +36,82 @@ module powerbi.extensibility.visual.advanceTooltipADE8B01854F34CEF9616DF8EA60691
     export class Visual implements IVisual {
         private target: HTMLElement;
         private svg: d3.Selection<SVGAElement>;
+        private svgGroup: d3.Selection<SVGAElement>;
         private host: IVisualHost;
         private viewModel: ViewModel;
         private dataView: powerbi.DataView[];
         private settings: VisualSettings;
+        private toolTipClassName: string = "atooltip";
+        private imageURL: string;
 
         constructor(options: VisualConstructorOptions) {
             this.host = options.host;
             this.target = options.element;
-            if (typeof document !== "undefined") {
-                this.svg = d3.select(this.target)
-                        .append("svg")
-                        .classed("atooltip", true);
-            }
         }
 
         public update(options: VisualUpdateOptions) {
             this.settings = Visual.parseSettings(options.dataViews[0]);
             this.viewModel = this.getViewModel(options, this.settings);
-            this.svg.attr({
-                width: options.viewport.width,
-                height: options.viewport.height
-            })
+            this.imageURL = this.settings.imageSettings.imageUrl;
+
+            let viewPortHeight: number = options.viewport.height;
+            let viewPortWidth: number = options.viewport.width;
+
+            if(this.settings.imageSettings.show == true){
+                if (typeof document !== "undefined"){
+                    this.svg = d3.selectAll('.'+this.toolTipClassName).remove();
+                    this.svg = d3.select(this.target)
+                                .append("svg")
+                                .classed(this.toolTipClassName, true)
+                                .attr({
+                                    width: options.viewport.width,
+                                    height: options.viewport.height
+                                });
+                    this.svgGroup = this.svg.append("g")
+                                    .classed("atooltip-group", true);
+
+                    this.svgGroup.append("svg:image")
+                                .attr('width', viewPortWidth)
+                                .attr('height', viewPortHeight)
+                                .attr("xlink:href", this.imageURL);
+
+                    // this.svgGroup.append("rect")
+                    //             .attr("width", viewPortWidth)
+                    //             .attr("height", viewPortHeight)
+                    //             .attr("fill", "#FF8100")
+                    //             .attr("stroke", "#E85000")
+                    //             .attr("stroke-width", "20");
+
+                    // this.svgGroup.append("text")
+                    //             .text("Select Image")
+                    //             .attr("fill", "black")
+                    //             .attr("x", viewPortWidth / 2)
+                    //             .attr("y",viewPortHeight / 2)
+                    //             .attr("font-size", (viewPortWidth + viewPortHeight) * 0.05)
+                    //             .attr("font-family", "sans-serif")
+                    //             .attr("text-anchor", "middle");
+
+                    // this.svgGroup.append("input")
+                    //             .classed("atooltip-image", true)
+                    //             .attr("type", "file")
+                    //             .attr({
+                    //                 width: options.viewport.width,
+                    //                 height: options.viewport.height
+                    //             });
+                }
+
+            } else {
+                if (typeof document !== "undefined") {
+                    this.svg = d3.selectAll('.'+this.toolTipClassName).remove();
+                    this.svg = d3.select(this.target)
+                            .append("svg")
+                            .classed(this.toolTipClassName, true)
+                            .attr({
+                                width: viewPortWidth,
+                                height: viewPortHeight
+                            });
+                }
+            }
 
             this.svg.on("mouseover", (e) => {
                 let mouse = d3.mouse(this.svg.node());
@@ -185,22 +239,25 @@ module powerbi.extensibility.visual.advanceTooltipADE8B01854F34CEF9616DF8EA60691
                     }
                 }
                 break;
-                case "infoSettings":{
-                    settings.push({
-                        objectName: options.objectName,
-                        properties: {
-                            show: this.settings.infoSettings.show,
-                            infoTitle: this.settings.infoSettings.infoTitle,
-                            infoText: this.settings.infoSettings.infoText
-                        },
-                        selector: null
-                    });
-                }
-                break;
+                // case "infoSettings":{
+                //     settings.push({
+                //         objectName: options.objectName,
+                //         properties: {
+                //             show: this.settings.infoSettings.show,
+                //             infoTitle: this.settings.infoSettings.infoTitle,
+                //             infoText: this.settings.infoSettings.infoText
+                //         },
+                //         selector: null
+                //     });
+                // }
+                // break;
             }
-            // console.log(this.viewModel.tooltips);
-            return settings;
+            if(settings.length > 0)
+                return settings;
+            else
+                return (VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options) as VisualObjectInstanceEnumerationObject);
         }
+
         public getValue<T>(objects: DataViewObjects, objectName: string, propertyName: string, defaultValue: T): T {
             if (objects) {
                 let object = objects[objectName];

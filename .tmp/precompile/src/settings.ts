@@ -25,29 +25,35 @@
  */
 
 module powerbi.extensibility.visual.advanceTooltipADE8B01854F34CEF9616DF8EA6069129  {
-  "use strict";
-import DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
+  	"use strict";
+	import DataViewObjectsParser = powerbi.extensibility.utils.dataview.DataViewObjectsParser;
 
-  export class VisualSettings extends DataViewObjectsParser {
-      public infoSettings: InfoSettings = new InfoSettings();
-      public measureFormatSettings: MeasureFormatSettings = new MeasureFormatSettings();
-  }
+  	export class VisualSettings extends DataViewObjectsParser {
+		public infoSettings: InfoSettings = new InfoSettings();
+		public measureFormatSettings: MeasureFormatSettings = new MeasureFormatSettings();
+		public imageSettings: ImageSettings = new ImageSettings();
+  	}
 
-  export class InfoSettings {
-      public show: boolean = false;
-      public infoTitle: string = "";
-      public infoText: string = "";
+  	export class InfoSettings {
+		public show: boolean = false;
+		public infoTitle: string = "";
+		public infoText: string = "";
     }
 
     export enum MeasureFormats {
-      none = <any>"none",
-      thousands = <any>"thousands",
-      millions = <any>"millions",
-      billions = <any>"billions",
-      trillions = <any>"trillions",
-  }
+		none = <any>"none",
+		thousands = <any>"thousands",
+		millions = <any>"millions",
+		billions = <any>"billions",
+		trillions = <any>"trillions",
+  	}
   
-  export class MeasureFormatSettings{
-    public measureFormat: MeasureFormats = MeasureFormats.none;
-  }
+  	export class MeasureFormatSettings{
+    	public measureFormat: MeasureFormats = MeasureFormats.none;
+	}
+	
+	export class ImageSettings{
+		public show: boolean = false;
+		public imageUrl: string = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1024px-Infobox_info_icon.svg.png";
+	}
 }
